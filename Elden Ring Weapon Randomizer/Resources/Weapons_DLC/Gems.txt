@@ -1,25 +1,25 @@
-2147683648 Ash of War: Dryleaf Whirlwind
-2147683748 Ash of War: Aspects of the Crucible: Wings
-2147883648 Ash of War: Spinning Gravity Thrust
-2147884648 Ash of War: Palm Blast
-2147885648 Ash of War: Piercing Throw
-2147886648 Ash of War: Scattershot Throw
-2147887648 Ash of War: Wall of Sparks
-2147888648 Ash of War: Rolling Sparks
-2147889648 Ash of War: Raging Beast
-2147890648 Ash of War: Savage Claws
-2147892648 Ash of War: Blind Spot
-2147893648 Ash of War: Swift Slash
-2147894648 Ash of War: Overhead Stance
-2147895648 Ash of War: Wing Stance
-2147896648 Ash of War: Blinkbolt
-2147897648 Ash of War: Flame Skewer
-2147898648 Ash of War: Savage Lion's Claw
-2147899648 Ash of War: Divine Beast Frost Stomp
-2147900648 Ash of War: Flame Spear
-2147901648 Ash of War: Carian Sovereignty
-2147902648 Ash of War: Shriek of Sorrow
-2147905648 Ash of War: Ghostflame Call
-2147988648 Ash of War: The Poison Flower Blooms Twice
-2148031648 Ash of War: Igon's Drake Hunt
-2148283648 Ash of War: Shield Strike
+200000 Ash of War: Dryleaf Whirlwind
+200100 Ash of War: Aspects of the Crucible: Wings
+400000 Ash of War: Spinning Gravity Thrust
+401000 Ash of War: Palm Blast
+402000 Ash of War: Piercing Throw
+403000 Ash of War: Scattershot Throw
+404000 Ash of War: Wall of Sparks
+405000 Ash of War: Rolling Sparks
+406000 Ash of War: Raging Beast
+407000 Ash of War: Savage Claws
+409000 Ash of War: Blind Spot
+410000 Ash of War: Swift Slash
+411000 Ash of War: Overhead Stance
+412000 Ash of War: Wing Stance
+413000 Ash of War: Blinkbolt
+414000 Ash of War: Flame Skewer
+415000 Ash of War: Savage Lion's Claw
+416000 Ash of War: Divine Beast Frost Stomp
+417000 Ash of War: Flame Spear
+418000 Ash of War: Carian Sovereignty
+419000 Ash of War: Shriek of Sorrow
+422000 Ash of War: Ghostflame Call
+505000 Ash of War: The Poison Flower Blooms Twice
+548000 Ash of War: Igon's Drake Hunt
+800000 Ash of War: Shield Strike

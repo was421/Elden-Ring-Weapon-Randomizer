@@ -1,14 +1,14 @@
-1075746124 Miriam's Vanishing
-1075746134 Glintblade Trio
-1075746144 Rellana's Twin Moons
-1075746324 Glintstone Nail
-1075746334 Glintstone Nails
-1075746524 Blades of Stone
-1075746534 Gravitational Missile
-1075746724 Mantle of Thorns
-1075746734 Impenetrable Thorns
-1075749234 Fleeting Microcosm
-1075749244 Cherishing Fingers
-1075746824 Rings of Spectral Light
-1075748024 Vortex of Putrescence
-1075748034 Mass of Putrescence
+2004300 Miriam's Vanishing
+2004310 Glintblade Trio
+2004320 Rellana's Twin Moons
+2004500 Glintstone Nail
+2004510 Glintstone Nails
+2004700 Blades of Stone
+2004710 Gravitational Missile
+2004900 Mantle of Thorns
+2004910 Impenetrable Thorns
+2007410 Fleeting Microcosm
+2007420 Cherishing Fingers
+2005000 Rings of Spectral Light
+2006200 Vortex of Putrescence
+2006210 Mass of Putrescence
