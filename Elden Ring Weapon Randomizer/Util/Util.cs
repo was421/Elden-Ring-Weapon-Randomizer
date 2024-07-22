@@ -14,7 +14,7 @@ namespace Elden_Ring_Weapon_Randomizer
 
         public static readonly string ExeDir = Environment.CurrentDirectory;
 
-        public static int DeleteFromEnd(int num, int n)
+        public static uint DeleteFromEnd(uint num, uint n)
         {
             for (int i = 1; num != 0; i++)
             {

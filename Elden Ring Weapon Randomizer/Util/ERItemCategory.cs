@@ -39,10 +39,10 @@ namespace Elden_Ring_Weapon_Randomizer
                 }
             };
 
-            GreatArrows = new ERItemCategory(Util.GetTxtResource("Resources/Weapons/GreatArrows.txt"), false);
-            GreatBolts = new ERItemCategory(Util.GetTxtResource("Resources/Weapons/GreatBolts.txt"), false);
-            Arrows = new ERItemCategory(Util.GetTxtResource("Resources/Weapons/Arrows.txt"), false);
-            Bolts = new ERItemCategory(Util.GetTxtResource("Resources/Weapons/Bolts.txt"), false);
+            GreatArrows = new ERItemCategory(Util.GetTxtResource("Resources/Weapons_DLC/GreatArrows.txt"), false);
+            GreatBolts = new ERItemCategory(Util.GetTxtResource("Resources/Weapons_DLC/GreatBolts.txt"), false);
+            Arrows = new ERItemCategory(Util.GetTxtResource("Resources/Weapons_DLC/Arrows.txt"), false);
+            Bolts = new ERItemCategory(Util.GetTxtResource("Resources/Weapons_DLC/Bolts.txt"), false);
         }
         public static List<ERItemCategory> All = new List<ERItemCategory>();
         public static ERItemCategory GreatArrows;

@@ -28,10 +28,46 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Elden Ring Debug Tool\PropertyHook\PropertyHook\PropertyHook.csproj" />
+    <ProjectReference Include="..\..\Elden Ring Debug Tool\src\Erd-Tools\src\PropertyHook\PropertyHook\PropertyHook.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Resources\ERItemCategories.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Weapons_DLC\Arrows.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Weapons_DLC\Bolts.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Weapons_DLC\Gems.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Weapons_DLC\GreatArrows.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Weapons_DLC\GreatBolts.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Weapons_DLC\MeleeWeapons.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Weapons_DLC\RangedWeapons.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Weapons_DLC\Shields.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Weapons_DLC\SpellTools.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Weapons_DLC\Sorceries.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\Weapons_DLC\Incantations.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Resources\ERItemCategories.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -62,6 +98,12 @@
     <None Update="Resources\Weapons\SpellTools.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+    <Folder Include="Resources\Weapons\" />
+    <Folder Include="Resources\Weapons_DLC\" />
   </ItemGroup>
 
 </Project>

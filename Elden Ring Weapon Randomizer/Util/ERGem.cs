@@ -15,8 +15,8 @@ namespace Elden_Ring_Weapon_Randomizer
         private static Regex gemEntryRx = new Regex(@"^\s*(?<id>\S+)\s+(?<name>.*)$");
 
         public string Name;
-        public int ID;
-        public int SwordArtID;
+        public uint ID;
+        public uint SwordArtID;
         public byte DefaultWeaponAttr;
         public List<Infusion> Infusions
         {
@@ -64,12 +64,12 @@ namespace Elden_Ring_Weapon_Randomizer
         {
             Match itemEntry = gemEntryRx.Match(config);
             Name = itemEntry.Groups["name"].Value.Replace("\r", "");
-            ID = Convert.ToInt32(itemEntry.Groups["id"].Value);
+            ID = Convert.ToUInt32(itemEntry.Groups["id"].Value);
         }
 
         public static void GetGems()
         {
-            string result = Util.GetTxtResource("Resources/Weapons/Gems.txt");
+            string result = Util.GetTxtResource("Resources/Weapons_DLC/Gems.txt");
             Gems = new List<ERGem>();
 
             foreach (string line in result.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries))

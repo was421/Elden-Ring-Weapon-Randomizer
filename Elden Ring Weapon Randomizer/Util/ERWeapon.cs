@@ -74,13 +74,13 @@ namespace Elden_Ring_Weapon_Randomizer
             BallistaBolt = 86,
         }
 
-        public int SortID { get; set; }
-        public int RealID { get; set; }
+        public uint SortID { get; set; }
+        public uint RealID { get; set; }
         public bool Infusible { get; set; }
         public byte[] OriginEquipWep { get; set; } = new byte[0x40];
         public bool Unique { get; set; }
         public short IconID { get; set; }
-        public int SwordArtId { get; set; }
+        public uint SwordArtId { get; set; }
         public WeaponType Type { get; set; }
         public byte[] OriginEquipWep16 { get; set; } = new byte[0x28];
         public ERWeapon(string config, bool infusible) : base(config) 
