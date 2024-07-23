@@ -1,5 +1,8 @@
-﻿Weapons/MeleeWeapons.txt true
-Weapons/MeleeWeapons.txt true
-Weapons/MeleeWeapons.txt true
+﻿Weapons_DLC/MeleeWeapons.txt true
+Weapons_DLC/MeleeWeapons.txt true
+Weapons_DLC/MeleeWeapons.txt true
+Weapons_DLC/MeleeWeapons.txt true
 //RangedWeapons.txt false
-Weapons/Shields.txt true
+Weapons_DLC/Shields.txt true
+Weapons_DLC/SpellTools.txt false
+//Weapons_DLC/RangedWeapons.txt false

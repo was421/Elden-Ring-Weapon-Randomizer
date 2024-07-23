@@ -16,19 +16,49 @@ namespace Elden_Ring_Weapon_Randomizer
         public const int PlayerGameData = 0x8;
         public enum Weapons
         {
-            ArmStyle = 0x328,
-            CurrWepSlotOffsetLeft = 0x32C,
-            CurrWepSlotOffsetRight = 0x330,
-            LHandWeapon1 = 0x39C,
-            LHandWeapon2 = 0x3A4,
-            LHandWeapon3 = 0x3AC,
-            RHandWeapon1 = 0x3A0,
-            RHandWeapon2 = 0x3A8,
-            RHandWeapon3 = 0x3B0,
-            Arrow1 = 0x3B4,
-            Bolt1 = 0x3B8,
-            Arrow2 = 0x3BC,
-            Bolt2 = 0x3C0
+            ArmStyle = 0x324,
+            CurrWepSlotOffsetLeft = 0x328,
+            CurrWepSlotOffsetRight = 0x32C,
+            LHandWeapon1 = 0x398,
+            LHandWeapon1_ = 0x5F8,
+            LHandWeapon2 = 0x3A0,
+            LHandWeapon2_ = 0x600,
+            LHandWeapon3 = 0x3A8,
+            LHandWeapon3_ = 0x608,
+            RHandWeapon1 = 0x39C,
+            RHandWeapon1_ = 0x5FC,
+            RHandWeapon2 = 0x3A4,
+            RHandWeapon2_ = 0x604,
+            RHandWeapon3 = 0x3AC,
+            RHandWeapon3_ = 0x60C,
+            Arrow1 = 0x3B0,
+            Arrow1_ = 0x610,
+            Bolt1 = 0x3B4,
+            Bolt1_ = 0x614,
+            Arrow2 = 0x3B8,
+            Arrow2_ = 0x618,
+            Bolt2 = 0x3BC,
+            Bolt2_ = 0x61C
+        }
+
+        public enum Magic : int
+        {
+            BasePtr = 0x530,
+            Slot0 = 0x10,
+            Slot1 = 0x18,
+            Slot2 = 0x20,
+            Slot3 = 0x28,
+            Slot4 = 0x30,
+            Slot5 = 0x38,
+            Slot6 = 0x40,
+            Slot7 = 0x48,
+            Slot8 = 0x50,
+            Slot9 = 0x58,
+            Slot10 = 0x60,
+            Slot11 = 0x68,
+            Slot12 = 0x70,
+            Slot13 = 0x78,
+            SelectedSlot = 0x80
         }
 
         public enum Player
@@ -77,5 +107,7 @@ namespace Elden_Ring_Weapon_Randomizer
             
         }
 
+
+        public const string WorldChrManAOB = "48 8B 05 ? ? ? ? 48 85 C0 74 0F 48 39 88";
     }
 }

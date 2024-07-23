@@ -24,10 +24,14 @@ namespace Elden_Ring_Weapon_Randomizer
         private PHPointer GameDataManSetup { get; set; }
         private PHPointer GameDataMan { get; set; }
         private PHPointer PlayerGameData { get; set; }
+        private PHPointer EquipMagicData { get; set; }
         private PHPointer SoloParamRepositorySetup { get; set; }
+        private PHPointer WorldChrManSetup { get; set; }
+        private PHPointer WorldChrMan { get; set; }
         private PHPointer SoloParamRepository { get; set; }
         private PHPointer EquipParamWeapon { get; set; }
         private PHPointer EquipParamGem { get; set; }
+        private PHPointer FlagByte0 { get; set; }
 
         //private PHPointer DurabilityAddr { get; set; }
         //private PHPointer DurabilitySpecialAddr { get; set; }
@@ -38,6 +42,7 @@ namespace Elden_Ring_Weapon_Randomizer
             OnHooked += ERHook_OnHooked;
             GameDataManSetup = RegisterAbsoluteAOB(EROffsets.GameDataManSetupAoB);
             SoloParamRepositorySetup = RegisterAbsoluteAOB(EROffsets.SoloParamRepositorySetupAoB);
+            WorldChrManSetup = RegisterAbsoluteAOB(EROffsets.WorldChrManAOB);
 
             RHandTimer.Elapsed += RHandTimer_Elapsed;
             RHandTimer.AutoReset = true;
@@ -49,6 +54,7 @@ namespace Elden_Ring_Weapon_Randomizer
         {
             GameDataMan = CreateBasePointer(BasePointerFromSetupPointer(GameDataManSetup));
             PlayerGameData = CreateChildPointer(GameDataMan, EROffsets.PlayerGameData);
+            EquipMagicData = CreateChildPointer(PlayerGameData, (int)EROffsets.Magic.BasePtr);
 
             SoloParamRepository = CreateBasePointer(BasePointerFromSetupPointer(SoloParamRepositorySetup));
             EquipParamWeapon = CreateChildPointer(SoloParamRepository, EROffsets.EquipParamWeaponOffset1, EROffsets.EquipParamWeaponOffset2, EROffsets.EquipParamWeaponOffset3);
@@ -58,6 +64,10 @@ namespace Elden_Ring_Weapon_Randomizer
             EquipParamWeaponBytes = bytes;
             EquipParamGemOffsetDict = BuildOffsetDictionary(EquipParamGem, "EQUIP_PARAM_GEM_ST", ref bytes);
             EquipParamGemBytes = bytes;
+
+            WorldChrMan = CreateBasePointer(BasePointerFromSetupPointer(WorldChrManSetup));
+            FlagByte0 = CreateChildPointer(WorldChrMan, 0x10EF8, 0x0, 0x190, 0x0);
+
             GetParams();
         }
         private void GetParams()
@@ -159,6 +169,16 @@ namespace Elden_Ring_Weapon_Randomizer
         }
         public int Level => PlayerGameData.ReadInt32((int)EROffsets.Player.Level);
         public string LevelString => PlayerGameData?.ReadInt32((int)EROffsets.Player.Level).ToString() ?? "";
+        public bool NoFPConsumption
+        {
+            get => Util.GetBit(FlagByte0.ReadByte(0x19B),2);
+            set
+            {
+                if (!Loaded)
+                    return;
+                FlagByte0.WriteByte(0x19B, Util.SetBit(FlagByte0.ReadByte(0x19B), 2, value));
+            }
+        }
         public byte ArmStyle
         {
             get => PlayerGameData.ReadByte((int)EROffsets.Weapons.ArmStyle);
@@ -197,6 +217,7 @@ namespace Elden_Ring_Weapon_Randomizer
                 if (!Loaded)
                     return;
                 PlayerGameData.WriteUInt32((int)EROffsets.Weapons.RHandWeapon1, value);
+                PlayerGameData.WriteUInt32((int)EROffsets.Weapons.RHandWeapon1_, value);
             }
         }
         public uint RHandWeapon2
@@ -207,6 +228,7 @@ namespace Elden_Ring_Weapon_Randomizer
                 if (!Loaded)
                     return;
                 PlayerGameData.WriteUInt32((int)EROffsets.Weapons.RHandWeapon2, value);
+                PlayerGameData.WriteUInt32((int)EROffsets.Weapons.RHandWeapon2_, value);
             }
         }
         public uint RHandWeapon3
@@ -217,6 +239,7 @@ namespace Elden_Ring_Weapon_Randomizer
                 if (!Loaded)
                     return;
                 PlayerGameData.WriteUInt32((int)EROffsets.Weapons.RHandWeapon3, value);
+                PlayerGameData.WriteUInt32((int)EROffsets.Weapons.RHandWeapon3_, value);
             }
         }
         public uint LHandWeapon1
@@ -227,6 +250,7 @@ namespace Elden_Ring_Weapon_Randomizer
                 if (!Loaded)
                     return;
                 PlayerGameData.WriteUInt32((int)EROffsets.Weapons.LHandWeapon1, value);
+                PlayerGameData.WriteUInt32((int)EROffsets.Weapons.LHandWeapon1_, value);
             }
         }
         public uint LHandWeapon2
@@ -237,6 +261,7 @@ namespace Elden_Ring_Weapon_Randomizer
                 if (!Loaded)
                     return;
                 PlayerGameData.WriteUInt32((int)EROffsets.Weapons.LHandWeapon2, value);
+                PlayerGameData.WriteUInt32((int)EROffsets.Weapons.LHandWeapon2_, value);
             }
         }
         public uint LHandWeapon3
@@ -247,6 +272,7 @@ namespace Elden_Ring_Weapon_Randomizer
                 if (!Loaded)
                     return;
                 PlayerGameData.WriteUInt32((int)EROffsets.Weapons.LHandWeapon3, value);
+                PlayerGameData.WriteUInt32((int)EROffsets.Weapons.LHandWeapon3_, value);
             }
         }
         public uint Arrow1
@@ -257,6 +283,7 @@ namespace Elden_Ring_Weapon_Randomizer
                 if (!Loaded)
                     return;
                 PlayerGameData.WriteUInt32((int)EROffsets.Weapons.Arrow1, value);
+                PlayerGameData.WriteUInt32((int)EROffsets.Weapons.Arrow1_, value);
             }
         }
         public uint Arrow2
@@ -267,6 +294,7 @@ namespace Elden_Ring_Weapon_Randomizer
                 if (!Loaded)
                     return;
                 PlayerGameData.WriteUInt32((int)EROffsets.Weapons.Arrow2, value);
+                PlayerGameData.WriteUInt32((int)EROffsets.Weapons.Arrow2_, value);
             }
         }
         public uint Bolt1
@@ -277,6 +305,7 @@ namespace Elden_Ring_Weapon_Randomizer
                 if (!Loaded)
                     return;
                 PlayerGameData.WriteUInt32((int)EROffsets.Weapons.Bolt1, value);
+                PlayerGameData.WriteUInt32((int)EROffsets.Weapons.Bolt1_, value);
             }
         }
         public uint Bolt2
@@ -287,6 +316,7 @@ namespace Elden_Ring_Weapon_Randomizer
                 if (!Loaded)
                     return;
                 PlayerGameData.WriteUInt32((int)EROffsets.Weapons.Bolt2, value);
+                PlayerGameData.WriteUInt32((int)EROffsets.Weapons.Bolt2_, value);
             }
         }
 
@@ -313,9 +343,13 @@ namespace Elden_Ring_Weapon_Randomizer
             {
                 RHandRandom = value;
                 LHandRandom = value;
+                NoFPConsumption = value;
 
-                if (!value)
+                if (!value) {
                     RestoreParams();
+                    AssignBlots(true);
+                    AssignMagic(true);
+                }
             } 
         }
 
@@ -360,11 +394,6 @@ namespace Elden_Ring_Weapon_Randomizer
         private void RHandTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
             RandomizeRightHand();
-
-            //Arrow1 = ERItemCategory.Arrows.Weapons[RRand.Next(ERItemCategory.Arrows.Weapons.Count)].ID;
-            //Arrow2 = ERItemCategory.GreatArrows.Weapons[RRand.Next(ERItemCategory.GreatArrows.Weapons.Count)].ID;
-            //Bolt1 = ERItemCategory.Bolts.Weapons[RRand.Next(ERItemCategory.Bolts.Weapons.Count)].ID;
-            //Bolt2 = ERItemCategory.Bolts.Weapons[RRand.Next(ERItemCategory.Bolts.Weapons.Count)].ID;
         }
 
         private void RandomizeRightHand()
@@ -398,9 +427,47 @@ namespace Elden_Ring_Weapon_Randomizer
                 AssignWeapon(OGRHandWeapon3Param, weapon);
             }
 
+            if (RHand1 || RHand2 || RHand3)
+            {
+                AssignBlots(false);
+                AssignMagic(false);
+            }
+            else {
+                AssignBlots(true);
+                AssignMagic(true);
+            }
+
             RHandTimer.Interval = RHandTime * 1000;
         }
-
+        private void AssignBlots(bool clear) {
+            if (clear) {
+                Arrow1 = 0xFF_FF_FF_FF;
+                Arrow2 = 0xFF_FF_FF_FF;
+                Bolt1 = 0xFF_FF_FF_FF;
+                Bolt2 = 0xFF_FF_FF_FF;
+                return;
+            }
+            Arrow1 = ERItemCategory.Arrows.Weapons[RRand.Next(ERItemCategory.Arrows.Weapons.Count)].ID;
+            Arrow2 = ERItemCategory.GreatArrows.Weapons[RRand.Next(ERItemCategory.GreatArrows.Weapons.Count)].ID;
+            Bolt1 = ERItemCategory.Bolts.Weapons[RRand.Next(ERItemCategory.Bolts.Weapons.Count)].ID;
+            Bolt2 = ERItemCategory.Bolts.Weapons[RRand.Next(ERItemCategory.Bolts.Weapons.Count)].ID;
+        }
+        private void AssignMagic(bool clear)
+        {
+            if (clear) {
+                for (int i = 0; i < 14; i++)
+                {
+                    EquipMagicData.WriteUInt32((int)EROffsets.Magic.Slot0 + (0x8 * i), 0xFF_FF_FF_FF);
+                }
+                return;
+            }
+            List<ERWeapon> Incantations = ERItemCategory.Incantations.Weapons;
+            List<ERWeapon> Sorceries = ERItemCategory.Sorceries.Weapons;
+            for (int i = 0; i < 14; i++) {
+                EquipMagicData.WriteUInt32((int)EROffsets.Magic.Slot0 + (0x8 * i), (i % 2 == 0) ? Incantations[RRand.Next(Incantations.Count)].ID : Sorceries[RRand.Next(Sorceries.Count)].ID);
+            }
+            
+        }
         private void AssignWeapon(PHPointer weaponPointer, ERWeapon weapon)
         {
             weaponPointer.WriteUInt32((int)EROffsets.EquipParamWeapon.SwordArtsParamId, weapon.SwordArtId);
@@ -491,6 +558,16 @@ namespace Elden_Ring_Weapon_Randomizer
                 LHandWeapon3 = weapon.ID;
                 AssignWeapon(OGLHandWeapon3Param, weapon);
             }
+            if (LHand1 || LHand2 || LHand3)
+            {
+                AssignBlots(false);
+                AssignMagic(false);
+            }
+            else
+            {
+                AssignBlots(true);
+                AssignMagic(true);
+            }
 
             LHandTimer.Interval = LHandTime * 1000;
         }
@@ -515,10 +592,9 @@ namespace Elden_Ring_Weapon_Randomizer
             var id = newWeapon.ID;
 
             ERGem? ash;
-
-            if (RandomizeAsh && !newWeapon.Unique)
+            var gems = ERGem.Gems.Where(x => x.WeaponTypes.Contains(newWeapon.Type)).ToList();
+            if (RandomizeAsh && !newWeapon.Unique && gems.Count > 0)
             {
-                var gems = ERGem.Gems.Where(x => x.WeaponTypes.Contains(newWeapon.Type)).ToList();
                 ash = gems[rand.Next(gems.Count)];
             }
             else
@@ -538,7 +614,7 @@ namespace Elden_Ring_Weapon_Randomizer
             if (LevelRestrict)
                 id += (uint)GetLevel(maxLevel);
             else
-                id += (uint)rand.Next(maxLevel);
+                id += (uint)maxLevel;
 
             return newWeapon;
         }

@@ -72,5 +72,32 @@ namespace Elden_Ring_Weapon_Randomizer
         {
             return Regex.Split(source, pattern);
         }
+
+        public static bool GetBit(byte value, int position)
+        {
+            if (position < 0 || position > 7)
+            {
+                throw new ArgumentOutOfRangeException(nameof(position), "Position must be between 0 and 7.");
+            }
+
+            return (value & (1 << position)) != 0;
+        }
+
+        public static byte SetBit(byte value, int position, bool bitValue)
+        {
+            if (position < 0 || position > 7)
+            {
+                throw new ArgumentOutOfRangeException(nameof(position), "Position must be between 0 and 7.");
+            }
+
+            if (bitValue)
+            {
+                return (byte)(value | (1 << position));
+            }
+            else
+            {
+                return (byte)(value & ~(1 << position));
+            }
+        }
     }
 }

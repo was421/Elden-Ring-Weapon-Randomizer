@@ -69,7 +69,8 @@ namespace Elden_Ring_Weapon_Randomizer
 
         public static void GetGems()
         {
-            string result = Util.GetTxtResource("Resources/Weapons_DLC/Gems.txt");
+            string result_DLC = Util.GetTxtResource("Resources/Weapons_DLC/Gems.txt");
+            string result = Util.GetTxtResource("Resources/Weapons/Gems.txt");
             Gems = new List<ERGem>();
 
             foreach (string line in result.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries))
@@ -79,6 +80,14 @@ namespace Elden_Ring_Weapon_Randomizer
                     Gems.Add(new ERGem(line));
                 }
             };
+            foreach (string line in result_DLC.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                if (!line.Contains("//")) //determine if line is a valid resource or not
+                {
+                    Gems.Add(new ERGem(line));
+                }
+            };
+
         }
 
         public static List<WeaponType> Weapons = Enum.GetValues(typeof(WeaponType)).Cast<WeaponType>().ToList();
