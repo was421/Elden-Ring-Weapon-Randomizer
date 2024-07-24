@@ -343,11 +343,11 @@ namespace Elden_Ring_Weapon_Randomizer
             {
                 RHandRandom = value;
                 LHandRandom = value;
-                NoFPConsumption = value;
 
                 if (!value) {
+                    NoFPConsumption = value;
                     RestoreParams();
-                    AssignBlots(true);
+                    //AssignBlots(true);
                     AssignMagic(true);
                 }
             } 
@@ -398,7 +398,9 @@ namespace Elden_Ring_Weapon_Randomizer
 
         private void RandomizeRightHand()
         {
-            UsedWeapons.Clear();
+            if(UsedWeapons.Count() > 4) {
+                UsedWeapons.RemoveRange(0, UsedWeapons.Count() - 2);
+            }
             if (RHand1)
                 UsedWeapons.Add(Util.DeleteFromEnd(RHandWeapon1, 3));
             if (RHand2)
@@ -429,11 +431,12 @@ namespace Elden_Ring_Weapon_Randomizer
 
             if (RHand1 || RHand2 || RHand3)
             {
-                AssignBlots(false);
+                //AssignBlots(false);
                 AssignMagic(false);
+                NoFPConsumption = true;
             }
             else {
-                AssignBlots(true);
+                //AssignBlots(true);
                 AssignMagic(true);
             }
 
@@ -531,7 +534,10 @@ namespace Elden_Ring_Weapon_Randomizer
         {
             if (!_rHandRandom)
             {
-                UsedWeapons.Clear();
+                if (UsedWeapons.Count() > 10)
+                {
+                    UsedWeapons.RemoveRange(0, UsedWeapons.Count() - 2);
+                }
                 if (LHand1)
                     UsedWeapons.Add(Util.DeleteFromEnd(LHandWeapon1, 3));
                 if (LHand2)
@@ -560,12 +566,13 @@ namespace Elden_Ring_Weapon_Randomizer
             }
             if (LHand1 || LHand2 || LHand3)
             {
-                AssignBlots(false);
+                //AssignBlots(false);
                 AssignMagic(false);
+                NoFPConsumption = true;
             }
             else
             {
-                AssignBlots(true);
+                //AssignBlots(true);
                 AssignMagic(true);
             }
 
@@ -604,17 +611,19 @@ namespace Elden_Ring_Weapon_Randomizer
 
             newWeapon.SwordArtId = ash?.SwordArtID ?? newWeapon.SwordArtId;
 
-            uint infusion = 0;
-            if (newWeapon.Infusible && ash != null)
-                infusion = (uint)ash?.Infusions[rand.Next(ash.Infusions.Count)];
-            
-            id += infusion;
+            //uint infusion = 0;
+            //if (newWeapon.Infusible && ash != null)
+            //    infusion = (uint)ash?.Infusions[rand.Next(ash.Infusions.Count)];
+            //id += infusion;
+
             int maxLevel = newWeapon.Unique ? 10 : 25;
 
             if (LevelRestrict)
                 id += (uint)GetLevel(maxLevel);
             else
                 id += (uint)maxLevel;
+
+            newWeapon.ID = id;
 
             return newWeapon;
         }
