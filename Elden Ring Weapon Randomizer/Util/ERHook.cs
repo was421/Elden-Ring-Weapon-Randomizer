@@ -470,7 +470,7 @@ namespace Elden_Ring_Weapon_Randomizer
             weaponPointer.WriteInt16((int)EROffsets.EquipParamWeapon.IconID, weapon.IconID);
             if(UsedWeapons.Count > 10)
             {
-                UsedWeapons.Remove(0);
+                UsedWeapons.Clear();
             }
         }
 
