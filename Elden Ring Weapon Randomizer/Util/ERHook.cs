@@ -435,10 +435,6 @@ namespace Elden_Ring_Weapon_Randomizer
                 AssignMagic(false);
                 NoFPConsumption = true;
             }
-            else {
-                //AssignBlots(true);
-                AssignMagic(true);
-            }
 
             RHandTimer.Interval = RHandTime * 1000;
         }
@@ -569,11 +565,6 @@ namespace Elden_Ring_Weapon_Randomizer
                 //AssignBlots(false);
                 AssignMagic(false);
                 NoFPConsumption = true;
-            }
-            else
-            {
-                //AssignBlots(true);
-                AssignMagic(true);
             }
 
             LHandTimer.Interval = LHandTime * 1000;

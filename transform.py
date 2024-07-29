@@ -261,3 +261,4 @@ with open(f"{OUT_DIR}/Sorceries.txt", "w") as f:
 with open(f"{OUT_DIR}/Incantations.txt", "w") as f:
     for id, name in dlc_Incantations:
         f.write(f"{id} {name}\n")
+        
