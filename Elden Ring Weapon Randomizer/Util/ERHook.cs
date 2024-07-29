@@ -398,9 +398,6 @@ namespace Elden_Ring_Weapon_Randomizer
 
         private void RandomizeRightHand()
         {
-            if(UsedWeapons.Count() > 4) {
-                UsedWeapons.RemoveRange(0, UsedWeapons.Count() - 2);
-            }
             if (RHand1)
                 UsedWeapons.Add(Util.DeleteFromEnd(RHandWeapon1, 3));
             if (RHand2)
@@ -471,6 +468,10 @@ namespace Elden_Ring_Weapon_Randomizer
         {
             weaponPointer.WriteUInt32((int)EROffsets.EquipParamWeapon.SwordArtsParamId, weapon.SwordArtId);
             weaponPointer.WriteInt16((int)EROffsets.EquipParamWeapon.IconID, weapon.IconID);
+            if(UsedWeapons.Count > 10)
+            {
+                UsedWeapons.Remove(0);
+            }
         }
 
 
@@ -530,10 +531,6 @@ namespace Elden_Ring_Weapon_Randomizer
         {
             if (!_rHandRandom)
             {
-                if (UsedWeapons.Count() > 10)
-                {
-                    UsedWeapons.RemoveRange(0, UsedWeapons.Count() - 2);
-                }
                 if (LHand1)
                     UsedWeapons.Add(Util.DeleteFromEnd(LHandWeapon1, 3));
                 if (LHand2)
@@ -573,11 +570,11 @@ namespace Elden_Ring_Weapon_Randomizer
         private ERWeapon GetWeapon(Random rand)
         {
             ERWeapon newWeapon = new ERWeapon();
+            List<ERWeapon> ERWeapons = ERItemCategory.All.SelectMany(x => x.Weapons).ToList();
             ERWeapon weapon;
             do
             {
-                var newWeaponCategory = ERItemCategory.All[rand.Next(ERItemCategory.All.Count)];
-                weapon = newWeaponCategory.Weapons[rand.Next(newWeaponCategory.Weapons.Count)];
+                weapon = ERWeapons[rand.Next(ERWeapons.Count)];
             } 
             while (Util.DeleteFromEnd(RHandWeapon1, 3) == weapon.RealID ||
             Util.DeleteFromEnd(RHandWeapon2, 3) == weapon.RealID ||
