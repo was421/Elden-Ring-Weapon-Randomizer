@@ -589,15 +589,25 @@ namespace Elden_Ring_Weapon_Randomizer
             //id += infusion;
 
             int maxLevel = newWeapon.Unique ? 10 : 25;
-
+            uint upgradeLevel = 0;
             if (LevelRestrict)
-                id += (uint)GetLevel(maxLevel);
+                upgradeLevel = (uint)GetLevel(maxLevel);
             else
-                id += (uint)maxLevel;
+                upgradeLevel = (uint)maxLevel;
+
+            id += upgradeLevel;
 
             newWeapon.ID = id;
 
             UsedWeapons.Add(newWeapon.RealID);
+
+            if(UsedWeapons.Count > 10)
+            {
+                UsedWeapons.RemoveAt(0);
+            }
+
+
+            Debug.WriteLine($"Weapon: {newWeapon.Name} || ID: {newWeapon.RealID} - {newWeapon.ID} : {upgradeLevel} : Is Unique: {newWeapon.Unique}");
 
             return newWeapon;
         }
